@@ -1,0 +1,21 @@
+'''
+**ADICIONAR PRODUTO**
+
+ATORES: Lojista
+
+DESCRIÇÃO: Lojista poderá cadastrar um novo produto no sistema.
+
+FLUXO PRINCIPAL:
+Lojista Clica em Adicionar Produto, Lojista Insere Dados do Novo Produto, Produto é Cadastrado no Sistema,
+Sistema exibe mensagem confirmando que o produto foi adicionado.
+
+FLUXO ALTERNATIVO:
+Sistema mostra informação de que o código do produto já existe, Lojista insere novos dados,
+Produto é Cadastrado no Sistema, Sistema exibe mensagem confirmando que o produto foi adicionado.
+'''
+
+#Adicionar Produto
+#Atualizar Produto
+#Deletar Produto
+#Consultar Todos os Produtos
+#Consultar um Produto
