@@ -1,1 +1,19 @@
+#RF1 – Adicionar produto
 
+def Adicionar_produto (codigo,nome_do_produto,fornecedor,descricao_do_produto):
+    #Adicionar caso de teste
+    #Comparação se o código já está cadastrado
+    #Armazenar valores no banco de dados
+    return print ('O produto foi adicionado do sistema!')
+
+print ('SISTEMA DE PRODUTOS')
+print ('1 – Adicionar produto\n2 – Deletar produto\n3 – Fazer update do produto\n4 – Listar todos os produtos\n5 – Consultar um produto')
+op = int (input ('Escolha uma opção:'))
+
+if op == 1:
+    codigo = int(input ('Digite o Código do Produto (O código deve ser um número inteiro!):'))
+    nome_do_produto = str (input ('Digite o Nome do Produto:'))
+    fornecedor = str (input ('Digite o Fornecedor Produto:'))
+    descricao_do_produto = str (input ('Digite a Descricao do Produto:'))
+    
+    Adicionar_produto(codigo, nome_do_produto, fornecedor, descricao_do_produto)
