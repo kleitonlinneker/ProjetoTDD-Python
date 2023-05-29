@@ -22,8 +22,8 @@ Nome do Produto, Fornecedor, Descrição do Produto), Sistema mostra informaçã
 ao Menu Principal.
 '''
 
-#Adicionar Produto
-#Atualizar Produto
-#Deletar Produto
-#Consultar Todos os Produtos
-#Consultar um Produto
+
+#RF2 – Deletar produto
+#RF3 – Fazer update do produto
+#RF4 – Listar todos os produtos
+#RF5 – Consultar um produto
