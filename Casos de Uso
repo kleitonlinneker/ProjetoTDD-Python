@@ -20,10 +20,41 @@ O Menu Principal é exibido ao Lojista, Lojista Clica na opção Adicionar Produ
 Nome do Produto, Fornecedor, Descrição do Produto), Sistema mostra informação de que o código do produto já existe, um submenu
 é exibido ao lojista com a opção de ações a serem tomadas, Lojista escolhe opção de cancelar o cadastramento, Sistema retorna
 ao Menu Principal.
+
+
+**RF2 -  DELETAR PRODUTO**
+
+ATORES: Lojista
+
+DESCRIÇÃO: Lojista poderá deletar um produto cadastrado no sistema.
+
+FLUXO PRINCIPAL:
+O Menu Principal é exibido ao Lojista, Lojista Clica na opção Deletar Produto, Lojista Insere o Código do Produto a ser Deletado,
+Produto a ser Deletado é Exibido pelo Sistema, Sistema solicita confirmação da operação, Lojista confirma a operação, Produto é
+Deletado do Sistema, Sistema exibe mensagem confirmando que o produto foi deletado.
+
+FLUXO ALTERNATIVO 01:
+O Menu Principal é exibido ao Lojista, Lojista Clica na opção Deletar Produto, Lojista Insere o Código do Produto a ser Deletado,
+Produto a ser Deletado é Exibido pelo Sistema, Sistema solicita confirmação da operação, Lojista não confirma a operação, Sistema
+exibe mensagem que a operação foi cancelada, Sistema retorna ao Menu Principal.
+FLUXO ALTERNATIVO 02:
+O Menu Principal é exibido ao Lojista, Lojista Clica na opção Deletar Produto, Lojista Insere o Código do Produto a ser Deletado,
+Sistema mostra informação de que não existe produto com o código informado, um submenu é exibido ao lojista com a opção de ações a
+serem tomadas, Lojista escolhe opção de tentar novamente com novo código, Lojista insere novos dados, Produto a ser Deletado é
+Exibido pelo Sistema, Sistema solicita confirmação da operação, Lojista confirma a operação, Produto é Deletado do Sistema, Sistema
+exibe mensagem confirmando que o produto foi deletado.
+FLUXO ALTERNATIVO 03:
+O Menu Principal é exibido ao Lojista, Lojista Clica na opção Deletar Produto, Lojista Insere o Código do Produto a ser Deletado,
+Sistema mostra informação de que não existe produto com o código informado, um submenu é exibido ao lojista com a opção de ações a
+serem tomadas, Lojista escolhe opção de tentar novamente com novo código, Lojista insere novos dados, Produto a ser Deletado é
+Exibido pelo Sistema, Sistema solicita confirmação da operação, Lojista não confirma a operação, Sistema exibe mensagem que a 
+operação foi cancelada, Sistema retorna ao Menu Principal.
+FLUXO ALTERNATIVO 04:
+O Menu Principal é exibido ao Lojista, Lojista Clica na opção Deletar Produto, Lojista Insere o Código do Produto a ser Deletado,
+Sistema mostra informação de que não existe produto com o código informado, um submenu é exibido ao lojista com a opção de ações a
+serem tomadas, Lojista escolhe opção de cancelar o deletamento, Sistema retorna ao Menu Principal.
 '''
 
-
-#RF2 – Deletar produto
 #RF3 – Fazer update do produto
 #RF4 – Listar todos os produtos
 #RF5 – Consultar um produto
