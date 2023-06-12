@@ -1,0 +1,46 @@
+import unittest
+from programa import Sistema
+
+
+class SistemaTest(unittest.TestCase):
+    def setUp(self):
+        self.sistema = Sistema()
+
+    def test_adicionar_produto(self):
+        self.assertTrue(self.sistema.adicionar_produto("001", "Produto A", "Fornecedor A", "Descrição do Produto A")[0])
+        self.assertFalse(self.sistema.adicionar_produto("001", "Produto B", "Fornecedor B", "Descrição do Produto B")[0])
+        self.assertTrue(self.sistema.adicionar_produto("002", "Produto B", "Fornecedor B", "Descrição do Produto B")[0])
+
+    def test_deletar_produto(self):
+        self.sistema.adicionar_produto("001", "Produto A", "Fornecedor A", "Descrição do Produto A")
+        self.sistema.adicionar_produto("002", "Produto B", "Fornecedor B", "Descrição do Produto B")
+
+        self.assertTrue(self.sistema.deletar_produto("001")[0])
+        self.assertFalse(self.sistema.deletar_produto("003")[0])
+
+    def test_fazer_update_produto(self):
+        self.sistema.adicionar_produto("001", "Produto A", "Fornecedor A", "Descrição do Produto A")
+        self.sistema.adicionar_produto("002", "Produto B", "Fornecedor B", "Descrição do Produto B")
+
+        self.assertTrue(self.sistema.fazer_update_produto("001", "Produto Atualizado", "Fornecedor A", "Nova descrição")[0])
+        self.assertFalse(self.sistema.fazer_update_produto("003", "Produto C", "Fornecedor C", "Descrição do Produto C")[0])
+
+    def test_listar_produtos(self):
+        self.sistema.adicionar_produto("001", "Produto A", "Fornecedor A", "Descrição do Produto A")
+        self.sistema.adicionar_produto("002", "Produto B", "Fornecedor B", "Descrição do Produto B")
+
+        produtos = self.sistema.listar_produtos()
+        self.assertNotEqual(produtos, "Nenhum produto cadastrado")
+
+    def test_consultar_produto(self):
+        self.sistema.adicionar_produto("001", "Produto A", "Fornecedor A", "Descrição do Produto A")
+        self.sistema.adicionar_produto("002", "Produto B", "Fornecedor B", "Descrição do Produto B")
+
+        produto = self.sistema.consultar_produto("001")
+        self.assertNotEqual(produto, "Produto não encontrado")
+        produto = self.sistema.consultar_produto("003")
+        self.assertEqual(produto, "Produto não encontrado")
+
+
+if __name__ == "__main__":
+    unittest.main()
