@@ -1,35 +1,62 @@
+import sqlite3
+
 class Produto:
-    def __init__(self, cod, nome, preco, fornecedor):
-        self.cod = cod
-        self.nome = nome
-        self.preco = preco
-        self.fornecedor = fornecedor
+    def __init__(self, bancodedados_produto):
+        self.conn = sqlite3.connect(bancodedados_produto)
+        self.cursor = self.conn.cursor()
+        self.cursor.execute(
+            '''
+            CREATE TABLE IF NOT EXISTS produtos (
+                cod INTEGER PRIMARY KEY,
+                nome TEXT,
+                preco REAL,
+                fornecedor TEXT
+            )
+            '''
+        )
 
-
-class GerenciamentoProduto:
-    def __init__(self):
-        self.produtos = []
 
     def add_produto(self, cod, nome, preco, fornecedor):
-        produto = Produto(cod, nome, preco, fornecedor)
-        self.produtos.append(produto)
+        self.cursor.execute(
+            '''
+            INSERT INTO produtos (cod, nome, preco, fornecedor) VALUES (?, ?, ?, ?)
+            ''',
+            (cod, nome, preco, fornecedor)
+        )
+        self.conn.commit()
 
     def delete_produto(self, cod):
-        self.produtos = [p for p in self.produtos if p.cod != cod]
+        self.cursor.execute(
+            '''
+            DELETE FROM produtos WHERE cod = ?
+            ''',
+            (cod,)
+        )
+        self.conn.commit()
 
     def update_produto(self, cod, nome, preco, fornecedor):
-        for produto in self.produtos:
-            if produto.cod == cod:
-                produto.nome = nome
-                produto.preco = preco
-                produto.fornecedor = fornecedor
-                break
+        self.cursor.execute(
+            '''
+            UPDATE produtos SET nome = ?, preco = ?, fornecedor = ? WHERE cod = ?
+            ''',
+            (nome, preco, fornecedor, cod)
+        )
+        self.conn.commit()
 
     def exibir_todos_produtos(self):
-        return self.produtos
+        self.cursor.execute(
+            '''
+            SELECT * FROM produtos
+            '''
+        )
+        return self.cursor.fetchall()
 
     def exibir_produto(self, cod):
-        for produto in self.produtos:
-            if produto.cod == cod:
-                return produto
-        return None
+        self.cursor.execute(
+            '''
+            SELECT * FROM produtos WHERE cod = ?
+            ''',
+            (cod,)
+        )
+        return self.cursor.fetchone()
+    
