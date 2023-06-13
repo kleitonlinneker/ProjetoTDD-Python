@@ -1,0 +1,35 @@
+class Produto:
+    def __init__(self, cod, nome, preco, fornecedor):
+        self.cod = cod
+        self.nome = nome
+        self.preco = preco
+        self.fornecedor = fornecedor
+
+
+class GerenciamentoProduto:
+    def __init__(self):
+        self.produtos = []
+
+    def add_produto(self, cod, nome, preco, fornecedor):
+        produto = Produto(cod, nome, preco, fornecedor)
+        self.produtos.append(produto)
+
+    def delete_produto(self, cod):
+        self.produtos = [p for p in self.produtos if p.cod != cod]
+
+    def update_produto(self, cod, nome, preco, fornecedor):
+        for produto in self.produtos:
+            if produto.cod == cod:
+                produto.nome = nome
+                produto.preco = preco
+                produto.fornecedor = fornecedor
+                break
+
+    def exibir_todos_produtos(self):
+        return self.produtos
+
+    def exibir_produto(self, cod):
+        for produto in self.produtos:
+            if produto.cod == cod:
+                return produto
+        return None
