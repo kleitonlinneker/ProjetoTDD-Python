@@ -1,15 +1,17 @@
 import unittest
-from produtos import Produto, GerenciamentoProduto
+from produtos import Produto
 
 
-class TesteGerenciamentoProduto(unittest.TestCase):
+class TesteProduto(unittest.TestCase):
     def setUp(self):
-        self.gerenciamento = GerenciamentoProduto()
+        self.gerenciamento = Produto(':memory:')
+
 
     def teste_add_produto(self):
         self.gerenciamento.add_produto(1, "Produto A", 10.0, "Fornecedor A")
-        self.assertEqual(len(self.gerenciamento.exibir_todos_produtos()), 1)
-
+        produto = self.gerenciamento.exibir_produto(1)
+        self.assertEqual(produto, (1, "Produto A", 10.0, "Fornecedor A"))
+        
     def teste_delete_produto(self):
         self.gerenciamento.add_produto(1, "Produto A", 10.0, "Fornecedor A")
         self.gerenciamento.delete_produto(1)
@@ -19,9 +21,7 @@ class TesteGerenciamentoProduto(unittest.TestCase):
         self.gerenciamento.add_produto(1, "Produto A", 10.0, "Fornecedor A")
         self.gerenciamento.update_produto(1, "Novo Produto A", 15.0, "Novo Fornecedor A")
         produto = self.gerenciamento.exibir_produto(1)
-        self.assertEqual(produto.nome, "Novo Produto A")
-        self.assertEqual(produto.preco, 15.0)
-        self.assertEqual(produto.fornecedor, "Novo Fornecedor A")
+        self.assertEqual(produto, (1, "Novo Produto A", 15.0, "Novo Fornecedor A"))
 
     def teste_exibir_todos_produtos(self):
         self.gerenciamento.add_produto(1, "Produto A", 10.0, "Fornecedor A")
@@ -32,9 +32,7 @@ class TesteGerenciamentoProduto(unittest.TestCase):
         self.gerenciamento.add_produto(1, "Produto A", 10.0, "Fornecedor A")
         produto = self.gerenciamento.exibir_produto(1)
         self.assertIsNotNone(produto)
-        self.assertEqual(produto.nome, "Produto A")
-        self.assertEqual(produto.preco, 10.0)
-        self.assertEqual(produto.fornecedor, "Fornecedor A")
+        self.assertEqual(produto, (1, "Produto A", 10.0, "Fornecedor A"))
 
         nao_existe_produto = self.gerenciamento.exibir_produto(99)
         self.assertIsNone(nao_existe_produto)
