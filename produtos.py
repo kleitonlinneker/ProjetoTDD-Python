@@ -1,6 +1,7 @@
 import sqlite3
 
 class Produto:
+    #CONEXÃO COM O BANCO DE DADOS E CRIAÇÃO DA TABELA PRODUTOS
     def __init__(self, bancodedados_produto):
         self.conn = sqlite3.connect(bancodedados_produto)
         self.cursor = self.conn.cursor()
@@ -15,7 +16,7 @@ class Produto:
             '''
         )
 
-
+    #FUNÇÃO QUE ADICIONA UM PRODUTO
     def add_produto(self, cod, nome, preco, fornecedor):
         self.cursor.execute(
             '''
@@ -25,6 +26,7 @@ class Produto:
         )
         self.conn.commit()
 
+    #FUNÇÃO QUE DELETA UM PRODUTO
     def delete_produto(self, cod):
         self.cursor.execute(
             '''
@@ -34,6 +36,7 @@ class Produto:
         )
         self.conn.commit()
 
+    #FUNÇÃO QUE FAZ O UPDATE DE UM PRODUTO
     def update_produto(self, cod, nome, preco, fornecedor):
         self.cursor.execute(
             '''
@@ -43,6 +46,7 @@ class Produto:
         )
         self.conn.commit()
 
+    #FUNÇÃO QUE EXIBE TODOS OS PRODUTOS
     def exibir_todos_produtos(self):
         self.cursor.execute(
             '''
@@ -51,6 +55,7 @@ class Produto:
         )
         return self.cursor.fetchall()
 
+    #FUNÇÃO QUE EXIBE UM PRODUTO
     def exibir_produto(self, cod):
         self.cursor.execute(
             '''
